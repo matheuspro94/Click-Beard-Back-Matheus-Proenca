@@ -5,6 +5,7 @@ import { CreateUserController } from '../controllers/users/CreateUserController'
 import { CreateBarberController } from '../controllers/barber/CreateBarberController'
 import { DeleteBarberController } from '../controllers/barber/DeleteBarberController'
 import { GetBarberController } from '../controllers/barber/GetBarberController'
+import { GetBarbersController } from '../controllers/barber/GetBarbersController'
 
 const routes = Router()
 //auth
@@ -15,8 +16,9 @@ routes.post('/user/', CreateUserController)
 
 //barber
 routes.post('/barber/', CreateBarberController)
-routes.delete('/barber/:id', DeleteBarberController)
+routes.get('/barbers/', GetBarbersController)
 routes.get('/barber/:id', GetBarberController)
+routes.delete('/barber/:id', DeleteBarberController)
 
 
 
