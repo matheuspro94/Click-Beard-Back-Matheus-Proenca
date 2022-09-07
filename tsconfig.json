@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "typeRoots": [
+      "src/utils/@types",
+      "./node_modules/@types"
+    ],
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
@@ -9,5 +13,9 @@
     "rootDir": "./src",
     "baseUrl": "./src",
     "esModuleInterop": true
-  }
+  },
+  "incluide": [
+    "src",
+    "src/utils/@types"
+  ]
 }

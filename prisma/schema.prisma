@@ -27,7 +27,7 @@ model Barber {
   name           String
   age            String
   date_of_hiring String
-  specialties    String
+  specialties    String[]
   Scheduling     Scheduling[]
 
   @@map("barbers")
@@ -42,7 +42,7 @@ model Scheduling {
   created_at DateTime @default(now())
   date       String
   hour       String
-  procedure  String
+  procedure  String[]
   status     String   @default("active")
 
   @@map("schedules")

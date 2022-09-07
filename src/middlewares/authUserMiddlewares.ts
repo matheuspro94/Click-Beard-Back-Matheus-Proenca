@@ -1,27 +1,31 @@
-import jwt from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
 import { APP_SECRET } from '../environment/environment'
+import jwt from 'jsonwebtoken'
+
+interface IToken {
+  id: string
+}
 
 export async function authUserMiddlewares(
   req: Request, res: Response, next: NextFunction
 ) {
-  const authHeader = req.headers.authorization
+  const token = req.headers.authorization?.split(' ')[1] || ''
 
-  if (!authHeader) {
-    res.status(401).json({
+  if (!token) {
+    return res.status(401).json({
       message: 'Token missing'
     })
   }
 
-  const token = authHeader?.replace('Bearer', '').trim() || ''
-
   try {
-    const data = jwt.verify(token, APP_SECRET)
-  } catch {
-    res.status(401).json({
+    const decoded = jwt.verify(token, APP_SECRET) as IToken
+
+    req.userId = decoded.id
+    return next()
+  } catch (err) {
+    console.error(err);
+    return res.status(401).json({
       message: "Invalid token",
     })
   }
-
-  next()
 }

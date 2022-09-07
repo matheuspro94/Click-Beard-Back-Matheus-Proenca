@@ -5,8 +5,6 @@ interface deleteBarber {
 }
 
 export async function DeleteBarber({ id }: deleteBarber) {
-  console.log(">>", id);
-
   const idBarberExist = await prismaClient.barber.findFirst({
     where: {
       id: id

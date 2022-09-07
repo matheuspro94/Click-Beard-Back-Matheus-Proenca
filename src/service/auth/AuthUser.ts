@@ -1,8 +1,15 @@
 import { compare } from 'bcrypt'
 import { prismaClient } from '../../database/prismaClient'
 import jwt from 'jsonwebtoken'
+import { APP_SECRET } from '../../environment/environment'
 
-export async function AuthUser({ email, password }: any) {
+
+interface IUser {
+  email: string,
+  password: string
+}
+
+export async function AuthUser({ email, password }: IUser) {
 
   const user = await prismaClient.user.findFirst({
     where: {
@@ -20,8 +27,7 @@ export async function AuthUser({ email, password }: any) {
     throw new Error("Email or password invalid!")
   }
 
-
-  const token = jwt.sign({ id: user.id }, 'secret', { expiresIn: '1d' })
+  const token = jwt.sign({ id: user.id, email }, APP_SECRET, { expiresIn: '1d' })
 
   const userWithToken = {
     user: { ...user },

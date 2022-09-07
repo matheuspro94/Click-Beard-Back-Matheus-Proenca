@@ -1,6 +1,14 @@
 import { prismaClient } from '../../database/prismaClient'
 
-export async function CreateBarber({ name, age, cpf, date_of_hiring, specialties }: any) {
+interface IBarberProps {
+  name: string,
+  age: string,
+  cpf: string,
+  date_of_hiring: string,
+  specialties: string[]
+}
+
+export async function CreateBarber({ name, age, cpf, date_of_hiring, specialties }: IBarberProps) {
   const cpfExist = await prismaClient.barber.findFirst({
     where: {
       cpf
