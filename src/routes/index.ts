@@ -14,6 +14,7 @@ import { GetSchedulesController } from '../controllers/schedules/GetSchedulesCon
 import { GetSchedulesTodayController } from '../controllers/schedules/GetSchedulesTodayController'
 import { GetSchedulesUpcomingController } from '../controllers/schedules/GetSchedulesUpcomingController'
 import { GetSchedulesUserController } from '../controllers/schedules/GetSchedulesUserController'
+import { DeleteScheduleController } from '../controllers/schedules/DeleteScheduleController'
 
 const routes = Router()
 //auth
@@ -34,6 +35,7 @@ routes.get('/schedules/', authUserMiddlewares, GetSchedulesController)
 routes.get('/schedules/today/:today', authUserMiddlewares, GetSchedulesTodayController)
 routes.get('/schedules/nottoday/:notToday', authUserMiddlewares, GetSchedulesUpcomingController)
 routes.get('/schedules/:id', authUserMiddlewares, GetSchedulesUserController)
+routes.delete('/schedules/:id', authUserMiddlewares, DeleteScheduleController)
 
 
 export { routes }

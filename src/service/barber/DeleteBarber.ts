@@ -12,7 +12,7 @@ export async function DeleteBarber({ id }: deleteBarber) {
   })
 
   if (!idBarberExist) {
-    throw new Error('id doesn`t exist!')
+    throw new Error('Barber doesn`t exist!')
   }
 
   await prismaClient.scheduling.deleteMany({
