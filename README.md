@@ -17,7 +17,7 @@ Esse projeto tem como objetivo, colocar em prática os conhecimentos em nodejs. 
  
 ```bash
 # No terminal, clone o projeto em SSH:
-$ git clone git@github.com:matheuspro94/clickbeard-back.git
+$ git clone git@github.com:matheuspro94/Click-Beard-Back-Matheus-Proenca.git
  
 # Entre na pasta do projeto:
 $ cd clickbeard-back
